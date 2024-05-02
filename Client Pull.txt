@@ -1,0 +1,31 @@
+//Design a PHP that uses 'Client Pull' to display the current time, updated every 10 seconds.
+
+DOCTYPE html> 
+> 
+> 
+<title>Client Pull</title> 
+<script> 
+function updateTime() { 
+var xmlhttp = new XMLHttpRequest(); 
+xmlhttp.onreadystatechange = function() { 
+if (this.readyState == 4 && this.status == 200) { 
+document.getElementById("time").innerHTML = 
+this.responseText; 
+} 
+}; 
+xmlhttp.open("GET", "get_time.php", true); 
+xmlhttp.send(); 
+} 
+setInterval(updateTime, 10000); // Update every 10 seconds 
+</script> 
+</head> 
+> 
+<h1>Client Pull Example</h1> 
+<p>Current time: <span id="time"></span></p> 
+</body> 
+</html>
+
+php 
+echo date("F j, Y, g:i:s a"); // Returns the current 
+time 
+?>
